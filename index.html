@@ -1,0 +1,549 @@
+# SIMO-LUXE-CAR-
+Mrhba bi ljami3 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMO LUXE CAR - Location de voitures de luxe au Maroc 🇲🇦</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: #ffd700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .cta-btn {
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231e3c72" width="1200" height="600"/><path fill="%232a5298" d="M0 400Q300 200 600 400T1200 400V600H0z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        /* Cars Section */
+        .cars-section {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e3c72;
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .car-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .car-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(30,60,114,0.8), rgba(255,215,0,0.3));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .car-card:hover .car-image::after {
+            opacity: 1;
+        }
+
+        .car-info {
+            padding: 1.5rem;
+        }
+
+        .car-model {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .car-year {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .car-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .book-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .book-btn:hover {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            transform: scale(1.02);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: #ffd700;
+            width: 50px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37,211,102,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cars-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-car-side"></i>
+                SIMO LUXE CAR
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#cars">Nos Voitures</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:+212609614140" class="cta-btn">Réservez Maintenant</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>✨ SIMO LUXE CAR ✨</h1>
+            <p>Votre agence de confiance pour la location de voitures au Maroc 🇲🇦<br>
+            Service disponible à l'aéroport Mohammed V ✈️</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-user"></i>
+                    <h3>Déplacements personnels</h3>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Voyages en famille</h3>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Rendez-vous pros</h3>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Courte/Longue durée</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars Section -->
+    <section class="cars-section" id="cars">
+        <div class="container">
+            <h2 class="section-title">🚗 Notre flotte de véhicules modernes</h2>
+            <div class="cars-grid">
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #667eea 0%, #764ba2 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Dacia automatique 2024</div>
+                        <div class="car-year">Automatique • Confort</div>
+                        <div class="car-price">Dès 350 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #f093fb 0%, #f5576c 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Kia Sportage 2025</div>
+                        <div class="car-year">SUV • Premium</div>
+                        <div class="car-price">Dès 650 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Seat Tarraco FR 2024</div>
+                        <div class="car-year">7 places • Sport</div>
+                        <div class="car-price">Dès 850 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #43e97b 0%, #38f9d7 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Renault Arkana 2024</div>
+                        <div class="car-year">SUV Coupé</div>
+                        <div class="car-price">Dès 700 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #fa709a 0%, #fee140 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Hyundai Tucson 2025</div>
+                        <div class="car-year">SUV Moderne</div>
+                        <div class="car-price">Dès 750 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">VW Touareg 2025</div>
+                        <div class="car-year">SUV Premium</div>
+                        <div class="car-price">Dès 1200 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #d299c2 0%, #fef9d7 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Audi Q3 2024</div>
+                        <div class="car-year">Compact Premium</div>
+                        <div class="car-price">Dès 900 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Mercedes CLA 220 2024</div>
+                        <div class="car-year">Coupé Luxe</div>
+                        <div class="car-price">Dès 1100 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #a1c4fd 0%, #c2e9fb 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Range Rover Vogue 2024</div>
+                        <div class="car-year">SUV Luxe</div>
+                        <div class="car-price">Dès 1800 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image" style="background-image: linear-gradient(45deg, #89f7fe 0%, #66a6ff 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%23ddd%22 width=%22400%22 height=%22250%22 rx=%2210%22/><circle fill=%22%23666%22 cx=%22200%22 cy=%22120%22 r=%2280%22/><rect fill=%22%23444%22 x=%22150%22 y=%22160%22 width=%22100%22 height=%2230%22 rx=%225%22/></svg>');"></div>
+                    <div class="car-info">
+                        <div class="car-model">Mercedes E220 2025</div>
+                        <div class="car-year">Berline Premium</div>
+                        <div class="car-price">Dès 1300 DH/jour</div>
+                        <button class="book-btn">Réserver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">📞 Réservation & Informations</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-plane"></i>
+                    <div>
+                        <strong>✈️ Aéroport Mohammed V</strong><br>
+                        Service disponible 24/7
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Rapide & Professionnel</strong><br>
+                        Prix compétitifs garantis
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>+212 609 614 140</strong><br>
+                        Contactez-nous sur WhatsApp
+                    </div>
+                </div>
+            </div>
+            <a href="https://wa.me/212609614140" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Réserver sur WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 SIMO LUXE CAR. Votre confort et satisfaction sont notre priorité. 🇲🇦</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Booking buttons
+        document.querySelectorAll('.book-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.open('https://wa.me/212609614140?text=Bonjour%2C%20je%20souhaite%20réserver%20une%20voiture', '_blank');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 60, 114, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+  </html>
